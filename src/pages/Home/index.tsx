@@ -1,6 +1,6 @@
 import { Box } from '@mui/material';
-import Header from '../../Components/Header';
-import CustomersList from '../../Components/CustomersList';
+import Header from '../../components/Header';
+import CustomersList from '../../components/CustomersList';
 
 function HomePage() {
 	return (

@@ -10,6 +10,15 @@ const styles = {
 		width: '90%',
 		margin: '0 auto',
 		borderRadius: '25px',
+		paddingBottom: '60px',
+	},
+	addCustomerButton: {
+		fontSize: '2.5em',
+		color: '#bdbdbd',
+		position: 'fixed',
+		bottom: '20px',
+		right: '20px',
+		cursor: 'pointer',
 	},
 	customerCard: {
 		display: 'flex',
