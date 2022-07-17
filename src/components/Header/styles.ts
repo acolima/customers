@@ -10,10 +10,13 @@ const styles = {
 		background: '#f4f6fa',
 	},
 	textfield: {
-		width: '90vw',
+		width: '60vw',
 		margin: '0 auto',
 		background: '#fff',
 		borderRadius: '5px',
+		'@media(max-width:600px)': {
+			width: '100vw',
+		},
 	},
 };
 

@@ -12,7 +12,7 @@ import {
 	Typography,
 } from '@mui/material';
 
-import AddCircle from '@mui/icons-material/AddCircle';
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import HomeIcon from '@mui/icons-material/Home';
@@ -71,7 +71,7 @@ function CustomersList() {
 				))}
 			</List>
 
-			<AddCircle
+			<PersonAddIcon
 				onClick={() => navigate('/customer')}
 				sx={styles.addCustomerButton}
 			/>

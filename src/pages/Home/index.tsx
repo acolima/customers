@@ -17,6 +17,5 @@ const styles = {
 	homepage: {
 		width: '100vw',
 		height: '100vh',
-		background: '#f4f6fa',
 	},
 };

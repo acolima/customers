@@ -1,7 +1,13 @@
 const styles = {
 	page: {
-		height: '200px',
+		height: '100%',
+		width: '60vw',
 		paddingTop: '100px',
+		margin: '0 auto',
+		position: 'relative',
+		'@media(max-width:600px)': {
+			width: '100vw',
+		},
 	},
 	customersList: {
 		display: 'flex',
@@ -15,7 +21,7 @@ const styles = {
 	addCustomerButton: {
 		fontSize: '2.5em',
 		color: '#bdbdbd',
-		position: 'fixed',
+		position: 'absolute',
 		bottom: '20px',
 		right: '20px',
 		cursor: 'pointer',

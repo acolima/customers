@@ -2,7 +2,6 @@ const styles = {
 	page: {
 		width: '100vw',
 		height: '100vh',
-		background: '#f4f6fa',
 		padding: '10px',
 		display: 'flex',
 		flexDirection: 'column',
@@ -12,12 +11,15 @@ const styles = {
 	},
 	form: {
 		background: '#fff',
-		width: '90vw',
+		width: '60vw',
 		display: 'flex',
 		flexDirection: 'column',
 		alignItems: 'center',
 		gap: '15px',
 		padding: '15px 0',
+		'@media(max-width: 600px)': {
+			width: '90vw',
+		},
 	},
 	phoneInput: {
 		display: 'flex',

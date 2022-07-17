@@ -1,13 +1,19 @@
 import 'react-toastify/dist/ReactToastify.min.css';
-import { CssBaseline } from '@mui/material';
+import { createTheme, CssBaseline, ThemeProvider } from '@mui/material';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import Customer from './pages/Customer';
 import HomePage from './pages/Home';
 
 function App() {
+	const theme = createTheme({
+		palette: {
+			background: { default: '#f4f6fa' },
+		},
+	});
+
 	return (
-		<>
+		<ThemeProvider theme={theme}>
 			<CssBaseline />
 			<ToastContainer />
 			<BrowserRouter>
@@ -17,7 +23,7 @@ function App() {
 					<Route path='/customer/:id' element={<Customer />} />
 				</Routes>
 			</BrowserRouter>
-		</>
+		</ThemeProvider>
 	);
 }
 

@@ -13,7 +13,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
 
 import { useEffect, useState } from 'react';
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import { errorAlert, successAlert } from '../../utils/toastifyAlerts';
 import styles from './styles';
