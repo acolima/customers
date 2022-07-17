@@ -25,7 +25,28 @@ async function getCustomers() {
 	return response.data;
 }
 
+async function getCustomerById(id: string) {
+	const response = await axios.get(`${BASE_URL}/customers/${id}`);
+
+	return response.data;
+}
+
+async function updateCustomer(id: string, customer: CreateCustomer) {
+	const response = await axios.put(`${BASE_URL}/customers/${id}`, customer);
+
+	return response.data;
+}
+
+async function deleteCustomer(id: string) {
+	const response = await axios.delete(`${BASE_URL}/customers/${id}`);
+
+	return response.data;
+}
+
 export const api = {
 	createCustomer,
+	deleteCustomer,
 	getCustomers,
+	getCustomerById,
+	updateCustomer,
 };
