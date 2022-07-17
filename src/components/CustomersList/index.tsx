@@ -18,43 +18,22 @@ import EditIcon from '@mui/icons-material/Edit';
 import HomeIcon from '@mui/icons-material/Home';
 import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import styles from './styles';
 import { api } from '../../services/api';
 import { errorAlert, successAlert } from '../../utils/toastifyAlerts';
+import { CustomerData } from '../../pages/Home';
 
-interface Customer {
-	_id: string;
-	name: string;
-	email: string;
-	phoneNumbers: Phone[];
+interface Props {
+	customers: CustomerData[] | null;
+	reloadPage: boolean;
+	setReloadPage: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-interface Phone {
-	number: string;
-	type: string;
-}
-
-function CustomersList() {
-	const [customers, setCustomers] = useState<Customer[] | null>(null);
-	const [reloadPage, setReloadPage] = useState(false);
-
+function CustomersList({ customers, reloadPage, setReloadPage }: Props) {
 	let navigate = useNavigate();
-
-	useEffect(() => {
-		getCustomers();
-	}, [reloadPage]);
-
-	async function getCustomers() {
-		try {
-			const response = await api.getCustomers();
-			setCustomers(response);
-		} catch (error) {
-			console.log(error);
-		}
-	}
 
 	if (!customers) return <h1>loading</h1>;
 
@@ -80,7 +59,7 @@ function CustomersList() {
 }
 
 interface CustomerProps {
-	customer: Customer;
+	customer: CustomerData;
 	reloadPage: boolean;
 	setReloadPage: React.Dispatch<React.SetStateAction<boolean>>;
 }

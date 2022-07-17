@@ -39,6 +39,7 @@ const styles = {
 		alignItems: 'center',
 		justifyContent: 'space-between',
 		gap: '10px',
+		padding: '10px 0',
 	},
 	customerName: {
 		fontFamily: 'Poppins, sans-serif',

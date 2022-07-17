@@ -25,8 +25,10 @@ async function getCustomers() {
 	return response.data;
 }
 
-async function getCustomerById(id: string) {
-	const response = await axios.get(`${BASE_URL}/customers/${id}`);
+async function getCustomer(filter: string, item: string) {
+	const response = await axios.get(
+		`${BASE_URL}/customers/search?${filter}=${item}`
+	);
 
 	return response.data;
 }
@@ -46,7 +48,7 @@ async function deleteCustomer(id: string) {
 export const api = {
 	createCustomer,
 	deleteCustomer,
+	getCustomer,
 	getCustomers,
-	getCustomerById,
 	updateCustomer,
 };

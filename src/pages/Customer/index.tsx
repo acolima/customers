@@ -46,14 +46,14 @@ function Customer() {
 
 	async function getCustomerData() {
 		try {
-			const response = await api.getCustomerById(id!);
+			const response = await api.getCustomer('id', id!);
 			setName(response.name);
 			setEmail(response.email);
 			setPhone1(response.phoneNumbers[0]);
 			if (response.phoneNumbers[1].number !== '')
 				setPhone2(response.phoneNumbers[1]);
-		} catch (error) {
-			console.log(error);
+		} catch (error: any) {
+			errorAlert(error.response);
 		}
 	}
 
