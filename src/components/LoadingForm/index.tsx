@@ -3,7 +3,7 @@ import { Box, Skeleton } from '@mui/material';
 function LoadingForm() {
 	return (
 		<Box sx={styles.container}>
-			<Skeleton variant='rectangular' width='90%' height='300px' />
+			<Skeleton variant='rectangular' width='100%' height='300px' />
 		</Box>
 	);
 }
