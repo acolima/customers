@@ -141,6 +141,7 @@ function AddOrEditCustomer() {
 			<Box component='form' onSubmit={handleSaveCustomer} sx={styles.form}>
 				<TextField
 					label='Nome'
+					id='customer-name-input'
 					variant='standard'
 					value={name}
 					onChange={(e) => setName(e.target.value)}
@@ -151,6 +152,7 @@ function AddOrEditCustomer() {
 
 				<TextField
 					label='Email'
+					id='customer-email-input'
 					variant='standard'
 					value={email}
 					type='email'
@@ -160,6 +162,7 @@ function AddOrEditCustomer() {
 				/>
 
 				<PhoneNumberInput
+					id={'phone1'}
 					phone={phone1}
 					setPhone={setPhone1}
 					required={true}
@@ -167,6 +170,7 @@ function AddOrEditCustomer() {
 				/>
 
 				<PhoneNumberInput
+					id={'phone2'}
 					phone={phone2}
 					setPhone={setPhone2}
 					required={false}
@@ -174,7 +178,7 @@ function AddOrEditCustomer() {
 				/>
 
 				<ButtonGroup>
-					<Button variant='contained' type='submit'>
+					<Button id='save-customer-button' variant='contained' type='submit'>
 						Salvar
 					</Button>
 
@@ -186,6 +190,7 @@ function AddOrEditCustomer() {
 }
 
 interface PhoneNumberProps {
+	id: string;
 	phone: Phone;
 	setPhone: React.Dispatch<React.SetStateAction<Phone>>;
 	required: boolean;
@@ -193,6 +198,7 @@ interface PhoneNumberProps {
 }
 
 function PhoneNumberInput({
+	id,
 	phone,
 	setPhone,
 	required,
@@ -218,6 +224,7 @@ function PhoneNumberInput({
 		<Box sx={styles.phoneInput}>
 			<TextField
 				label='Telefone'
+				id={`customer-${id}-input`}
 				variant='standard'
 				value={phone?.number}
 				required={required}

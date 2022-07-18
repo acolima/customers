@@ -39,6 +39,7 @@ function Header({ customerName, setCustomerName, reloadPage }: Props) {
 				/>
 
 				<PersonAddIcon
+					id='add-customer-button'
 					onClick={() => navigate('/customer')}
 					sx={styles.addCustomerButton}
 				/>

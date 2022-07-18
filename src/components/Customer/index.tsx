@@ -61,15 +61,27 @@ function Customer({ customer, reloadPage, setReloadPage }: CustomerProps) {
 
 	return (
 		<Card sx={styles.customerCard}>
-			<Box sx={styles.cardContainer} onClick={() => setOpen(!open)}>
+			<Box
+				id='customer-container'
+				sx={styles.cardContainer}
+				onClick={() => setOpen(!open)}
+			>
 				<Avatar sx={{ fontSize: '90%' }}>{customerInitials}</Avatar>
 
 				<Typography sx={styles.customerName}>{customer.name}</Typography>
 
 				{open && (
 					<>
-						<EditIcon fontSize='small' onClick={handleEditCustomer} />
-						<DeleteIcon fontSize='small' onClick={() => setShowDialog(true)} />
+						<EditIcon
+							id='edit-button'
+							fontSize='small'
+							onClick={handleEditCustomer}
+						/>
+						<DeleteIcon
+							id='delete-button'
+							fontSize='small'
+							onClick={() => setShowDialog(true)}
+						/>
 					</>
 				)}
 			</Box>
@@ -93,10 +105,12 @@ function Customer({ customer, reloadPage, setReloadPage }: CustomerProps) {
 			</Collapse>
 
 			<Dialog open={showDialog}>
-				<DialogTitle fontSize={'16px'}>Deseja apagar esse contato</DialogTitle>
+				<DialogTitle fontSize={'16px'}>Deseja apagar esse contato?</DialogTitle>
 				<DialogActions>
 					<Button onClick={() => setShowDialog(false)}>Não</Button>
-					<Button onClick={handleDeleteCustomer}>Sim</Button>
+					<Button id='confirm-delete-button' onClick={handleDeleteCustomer}>
+						Sim
+					</Button>
 				</DialogActions>
 			</Dialog>
 		</Card>
