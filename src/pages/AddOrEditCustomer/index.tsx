@@ -18,13 +18,20 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { errorAlert, successAlert } from '../../utils/toastifyAlerts';
 import styles from './styles';
 import { api } from '../../services/api';
+import LoadingForm from '../../components/LoadingForm';
 
 interface Phone {
 	number: string;
 	type: string;
 }
 
-function Customer() {
+function AddOrEditCustomer() {
+	const [invalidName, setInvalidName] = useState(false);
+	const [invalidPhoneNumber1, setInvalidPhoneNumber1] = useState(false);
+	const [invalidPhoneNumber2, setInvalidPhoneNumber2] = useState(false);
+	const [loading, setLoading] = useState(false);
+
+	let navigate = useNavigate();
 	const [name, setName] = useState('');
 	const [email, setEmail] = useState('');
 	const [phone1, setPhone1] = useState<Phone>({
@@ -45,6 +52,8 @@ function Customer() {
 	}, [id]);
 
 	async function getCustomerData() {
+		setLoading(true);
+
 		try {
 			const response = await api.getCustomer('id', id!);
 			setName(response.name);
@@ -55,13 +64,8 @@ function Customer() {
 		} catch (error: any) {
 			errorAlert(error.response);
 		}
+		setLoading(false);
 	}
-
-	const [invalidName, setInvalidName] = useState(false);
-	const [invalidPhoneNumber1, setInvalidPhoneNumber1] = useState(false);
-	const [invalidPhoneNumber2, setInvalidPhoneNumber2] = useState(false);
-
-	let navigate = useNavigate();
 
 	async function handleSaveCustomer(e: React.FormEvent) {
 		e.preventDefault();
@@ -108,18 +112,26 @@ function Customer() {
 			return true;
 		}
 
-		if (phone1.number.length < 10) {
+		if (phone1.number.length < 14) {
 			setInvalidPhoneNumber1(true);
 			errorAlert('Número de telefone inválido');
 			return true;
 		}
 
-		if (phone2.number.length < 10 && phone2.number !== '') {
+		if (phone2.number.length < 14 && phone2.number !== '') {
 			setInvalidPhoneNumber2(true);
 			errorAlert('Número de telefone inválido');
 			return true;
 		}
 	}
+
+	if (loading)
+		return (
+			<Box sx={styles.page}>
+				<Typography sx={{ font: '2em Poppins' }}>Editar Contato</Typography>
+				<LoadingForm />
+			</Box>
+		);
 
 	return (
 		<Box sx={styles.page}>
@@ -231,4 +243,4 @@ function PhoneNumberInput({
 	);
 }
 
-export default Customer;
+export default AddOrEditCustomer;

@@ -18,14 +18,7 @@ const styles = {
 		borderRadius: '25px',
 		paddingBottom: '60px',
 	},
-	addCustomerButton: {
-		fontSize: '2.5em',
-		color: '#bdbdbd',
-		position: 'absolute',
-		bottom: '20px',
-		right: '20px',
-		cursor: 'pointer',
-	},
+
 	customerCard: {
 		display: 'flex',
 		flexDirection: 'column',

@@ -12,7 +12,10 @@ import {
 	Typography,
 } from '@mui/material';
 
-import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import LoadingResults from '../LoadingResults';
+import NoResults from '../NoResults';
+import EmptyList from '../EmptyList';
+
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import HomeIcon from '@mui/icons-material/Home';
@@ -30,17 +33,27 @@ interface Props {
 	customers: CustomerData[] | null;
 	reloadPage: boolean;
 	setReloadPage: React.Dispatch<React.SetStateAction<boolean>>;
+	loading: boolean;
+	emptyList: boolean;
 }
 
-function CustomersList({ customers, reloadPage, setReloadPage }: Props) {
-	let navigate = useNavigate();
+function CustomersList({
+	customers,
+	reloadPage,
+	setReloadPage,
+	loading,
+	emptyList,
+}: Props) {
+	if (loading) return <LoadingResults />;
 
-	if (!customers) return <h1>loading</h1>;
+	if (customers?.length === 0 && emptyList) return <EmptyList />;
 
 	return (
 		<Box sx={styles.page}>
+			{customers?.length === 0 && <NoResults />}
+
 			<List sx={styles.customersList}>
-				{customers.map((customer) => (
+				{customers?.map((customer) => (
 					<Customer
 						key={customer._id}
 						customer={customer}
@@ -49,11 +62,6 @@ function CustomersList({ customers, reloadPage, setReloadPage }: Props) {
 					/>
 				))}
 			</List>
-
-			<PersonAddIcon
-				onClick={() => navigate('/customer')}
-				sx={styles.addCustomerButton}
-			/>
 		</Box>
 	);
 }

@@ -2,7 +2,7 @@ import 'react-toastify/dist/ReactToastify.min.css';
 import { createTheme, CssBaseline, ThemeProvider } from '@mui/material';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
-import Customer from './pages/Customer';
+import AddOrEditCustomer from './pages/AddOrEditCustomer';
 import HomePage from './pages/Home';
 
 function App() {
@@ -15,12 +15,12 @@ function App() {
 	return (
 		<ThemeProvider theme={theme}>
 			<CssBaseline />
-			<ToastContainer />
+			<ToastContainer autoClose={2000} />
 			<BrowserRouter>
 				<Routes>
 					<Route path='/' element={<HomePage />} />
-					<Route path='/customer' element={<Customer />} />
-					<Route path='/customer/:id' element={<Customer />} />
+					<Route path='/customer' element={<AddOrEditCustomer />} />
+					<Route path='/customer/:id' element={<AddOrEditCustomer />} />
 				</Routes>
 			</BrowserRouter>
 		</ThemeProvider>
